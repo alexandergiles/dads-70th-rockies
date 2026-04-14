@@ -356,6 +356,21 @@ section.compact { padding: 40px 0; }
   font-size: 20px;
   margin-bottom: 2px;
   color: var(--pine);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.flight-badge {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--amber-tint);
+  color: var(--amber);
+  border: 1px solid var(--amber);
 }
 .flight-card .where { color: var(--muted); font-size: 13px; margin-bottom: 12px; letter-spacing: 0.6px; }
 .flight-line { font-size: 14px; display: grid; grid-template-columns: 58px 1fr; gap: 10px; padding: 6px 0; border-bottom: 1px dashed var(--faint); }

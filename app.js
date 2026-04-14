@@ -124,8 +124,9 @@ const flightCards = document.getElementById("flightCards");
 TRIP.flights.forEach(f => {
   const c = document.createElement("div");
   c.className = "flight-card";
+  const badge = f.badge ? `<span class="flight-badge">${f.badge}</span>` : "";
   c.innerHTML = `
-    <div class="who">${f.who}</div>
+    <div class="who">${f.who}${badge}</div>
     <div class="where">${f.from}</div>
     <div class="flight-line"><span class="lbl">Out</span><span>${f.out}</span></div>
     <div class="flight-line"><span class="lbl">Back</span><span>${f.back}</span></div>
@@ -158,12 +159,15 @@ const tierBlock = (label, eyebrow, hotels, fourCol) => `
     <h3>${label}</h3>
     <div class="lodging-grid${fourCol ? " four" : ""}">${hotels.map(h => renderCard(h, h.name.includes("Marriott In-Terminal"))).join("")}</div>
   </div>`;
-tiersEl.innerHTML = [
+const tierBlocks = [
   tierBlock("Budget-friendly", "Tier 1", TRIP.lodging.budget),
   tierBlock("Mid-range (recommended)", "Tier 2", TRIP.lodging.mid, true),
   tierBlock("Splurge — make it memorable", "Tier 3", TRIP.lodging.splurge),
-  tierBlock("Calgary airport · Mon May 18 night", "Monday night", TRIP.lodging.calgary),
-].join("");
+];
+if (TRIP.lodging.calgary && TRIP.lodging.calgary.length) {
+  tierBlocks.push(tierBlock("Calgary airport · Mon May 18 night", "Monday night", TRIP.lodging.calgary));
+}
+tiersEl.innerHTML = tierBlocks.join("");
 
 // ===== Costs =====
 document.getElementById("costNote").textContent = TRIP.costs.note;

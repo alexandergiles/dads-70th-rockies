@@ -15,7 +15,7 @@ const TRIP = {
     { value: "70", label: "candles" },
   ],
 
-  arcSummary: "Three flights land at YYC within 12 minutes Sat afternoon → rental SUV → Bella Crusta sandwiches → Bow River picnic → Banff hotel → birthday dinner. Sunday: ski Sunshine all day. Monday: pick your own adventure (ski closing day, hike, or hot springs). Tuesday: pre-dawn drive to a 6 AM flight home.",
+  arcSummary: "Three flights land at YYC within 12 minutes Sat afternoon → rental SUV → Bella Crusta sandwiches → Bow River picnic → Banff hotel → birthday dinner. Sunday: ski Sunshine all day. Monday: pick your own adventure (ski closing day, hike, or hot springs), dinner in town, sleep in Banff. Tuesday: relaxed morning, optional hot springs, drive to YYC for afternoon flights home.",
 
   mapPoints: [
     { name: "YYC · Calgary airport", lat: 51.1139, lng: -114.0203, kind: "airport" },
@@ -40,7 +40,7 @@ const TRIP = {
         { time: "~3:30 PM", text: "🌉 Picnic at Engine Bridge. Three Sisters views over the Bow River." },
         { time: "~4:30 PM", text: "📸 Quick stop at the Mt. Norquay lookout. Watch for bighorn sheep on the switchbacks." },
         { time: "~5:15 PM", text: "Hotel check-in, Banff." },
-        { time: "Evening", text: "🎂 70th birthday dinner. The Bison / Chuck's Steakhouse / 1888 Chop House at the Fairmont." },
+        { time: "Evening", text: "🎂 70th birthday dinner. The Bison (first pick) — Chuck's Steakhouse or 1888 Chop House at the Fairmont as backups." },
       ],
     },
     {
@@ -61,8 +61,8 @@ const TRIP = {
       emoji: "🗺️",
       items: [
         { time: "Morning + afternoon", text: "Pick one of the four options below (or combo them). Sunshine's closing day with the Slush Cup is the headline." },
-        { time: "By 4 PM", text: "Wrap activities, grab dinner." },
-        { time: "Evening", text: "Drive to the Calgary airport hotel (~1.5h). Sleep there — way better than a 2:30 AM drive." },
+        { time: "Evening", text: "Farewell dinner in Banff — Bear Street Tavern or Magpie & Stump." },
+        { time: "Night", text: "Chill in Banff. No rush tomorrow — flights are all afternoon." },
       ],
     },
     {
@@ -71,8 +71,11 @@ const TRIP = {
       accent: "teal",
       emoji: "🛫",
       items: [
-        { time: "~4:30 AM", text: "At YYC. All three flights at 6:00 AM (Air Canada / United)." },
-        { time: "~3:30 PM", text: "Everyone home by mid-afternoon local time." },
+        { time: "Morning", text: "Coffee + breakfast in Banff. Final walk around town, no rush." },
+        { time: "~10 AM", text: "Check out of the hotel." },
+        { time: "Optional", text: "One more Upper Hot Springs soak or short hike before the drive." },
+        { time: "~11 AM", text: "Drive to YYC (~1.5 hr)." },
+        { time: "Afternoon", text: "Return the rental and fly home. Dad 12:34 PM → BUF. Jeremy & Alex 1:45 PM." },
       ],
     },
   ],
@@ -83,7 +86,7 @@ const TRIP = {
       emoji: "🎿",
       tag: "Full day · $170 · your level",
       body: "Sunshine's last day of the season. Spring corn snow, bluebird vibes, and the legendary Slush Cup pond-skim at ~1 PM where skiers cross a freezing pond in costume. The most 'Banff' way to close out the trip.",
-      logistics: "20 min drive from Banff. Free shuttle. Be off mountain by 3:30 PM to make Calgary by 7. Dinner en route or in Calgary.",
+      logistics: "20 min drive from Banff. Free shuttle. Off the mountain by 3:30 PM leaves plenty of time for dinner in town.",
     },
     {
       title: "Johnston Canyon → Ink Pots",
@@ -96,7 +99,7 @@ const TRIP = {
       title: "Tunnel Mountain summit",
       emoji: "⛰️",
       tag: "2 hours · free · easy–moderate",
-      body: "Quick summit hike from town. 4.3 km RT, 300m gain, switchbacks. South-facing, usually thaws early. Big Bow Valley views from the top. Low commitment — leaves time for hot springs / brunch / packing before the drive.",
+      body: "Quick summit hike from town. 4.3 km RT, 300m gain, switchbacks. South-facing, usually thaws early. Big Bow Valley views from the top. Low commitment — leaves time for hot springs / brunch later.",
       logistics: "Trailhead in Banff townsite — no driving needed.",
     },
     {
@@ -109,9 +112,9 @@ const TRIP = {
   ],
 
   mondayCombos: [
-    { name: "🏔️ Ski it out", body: "Ski Sunshine all day → drive to Calgary airport hotel. Most ski-focused. Best for the closing-day experience." },
-    { name: "🌲 Big nature day", body: "Johnston Canyon hike (AM) → lunch in Banff → Upper Hot Springs (PM) → drive to Calgary. Best mix of hike + recovery." },
-    { name: "🥾 Easy & relaxed", body: "Tunnel Mountain hike (AM) → coffee on Banff Ave → Upper Hot Springs → leisurely drive to Calgary. Lowest effort, most flexible." },
+    { name: "🏔️ Ski it out", body: "Ski Sunshine all day → farewell dinner in Banff. Most ski-focused. Best for the closing-day experience." },
+    { name: "🌲 Big nature day", body: "Johnston Canyon hike (AM) → lunch in Banff → Upper Hot Springs (PM) → dinner in town. Best mix of hike + recovery." },
+    { name: "🥾 Easy & relaxed", body: "Tunnel Mountain hike (AM) → coffee on Banff Ave → Upper Hot Springs → farewell dinner. Lowest effort, most flexible." },
   ],
 
   flights: [
@@ -119,31 +122,32 @@ const TRIP = {
       who: "Dad",
       from: "RSW · Fort Myers",
       out: "Sat 6:45 AM → 12:54 PM (1 stop IAH)",
-      back: "Tue 6:00 AM → 3:25 PM (1 stop DEN)",
+      back: "Tue 12:34 PM → 9:01 PM (1 stop ORD) → BUF",
       airline: "United / Air Canada",
-      cost: "$762 USD",
+      cost: "$724 USD",
+      badge: "multi-city",
     },
     {
       who: "Jeremy",
       from: "LGA · New York",
       out: "Sat 7:25 AM → 12:43 PM (1 stop YYZ)",
-      back: "Tue 6:00 AM → 2:37 PM (1 stop YUL)",
+      back: "Tue 1:45 PM → 10:36 PM",
       airline: "Air Canada / United",
-      cost: "$386 USD",
+      cost: "$528 USD",
     },
     {
       who: "Alex",
       from: "DCA · Washington",
       out: "Sat 6:59 AM → 12:43 PM (1 stop YYZ)",
-      back: "Tue 6:00 AM → 3:39 PM (1 stop YUL)",
+      back: "Tue 1:45 PM → 10:28 PM",
       airline: "Air Canada / United",
-      cost: "$500 USD",
+      cost: "$505 USD",
     },
   ],
 
   flightCallouts: [
     { emoji: "🛬", text: "All three flights land at YYC within 12 minutes (12:43–12:54 PM). Easy to meet at baggage claim and pick up the rental together." },
-    { emoji: "🛫", text: "All three depart Tuesday at 6:00 AM. You need to be at YYC by ~4:30 AM — drive to the Calgary airport hotel Monday night." },
+    { emoji: "🛫", text: "Tuesday flights are all afternoon (Dad 12:34 PM → BUF · Jeremy & Alex 1:45 PM). No pre-dawn drive — sleep in Banff Mon night, relaxed morning, leave for YYC ~11 AM." },
   ],
 
   lodging: {
@@ -160,18 +164,13 @@ const TRIP = {
     ],
     splurge: [
       { name: "Fairmont Banff Springs", stars: 5, rate: 450, vibe: "Iconic castle", note: "\"Castle in the Rockies.\" Once-in-a-lifetime for Dad's 70th." },
-      { name: "Rimrock Resort Hotel", stars: 4.5, rate: 300, vibe: "Elegant, quiet", note: "Near Banff Gondola. Eden restaurant is top-tier." },
+      { name: "Rimrock Resort Hotel", stars: 4.5, rate: 300, vibe: "Elegant, quiet", note: "Near Banff Gondola. (Eden restaurant closed for renovation until July 2026.)" },
       { name: "Sunshine Mountain Lodge", stars: 4, rate: 250, vibe: "Ski-in / ski-out", note: "Only on-mountain lodge at Sunshine. Remote from town." },
-    ],
-    calgary: [
-      { name: "Calgary Airport Marriott In-Terminal", stars: 4, rate: 225, vibe: "Inside the terminal", note: "Literally inside YYC — walk to your gate. Best move for a 6 AM flight." },
-      { name: "Hampton Inn Calgary Airport North", stars: 3, rate: 165, vibe: "Practical", note: "Free shuttle, free breakfast. Solid mid-range." },
-      { name: "Hilton Garden Inn Calgary Airport", stars: 3.5, rate: 180, vibe: "Reliable", note: "Shuttle service, 5 min to terminal." },
     ],
   },
 
   costs: {
-    note: "CAD unless noted. Split costs are split across 3 travelers.",
+    note: "CAD unless noted. Split costs are split across 3 travelers. All 3 nights in Banff — no Calgary airport hotel needed.",
     sections: [
       {
         name: "Ground transport",
@@ -193,7 +192,6 @@ const TRIP = {
         name: "Lodging",
         rows: [
           { label: "Banff hotel — 3 nights, 2 rooms (mid-range)", amount: "C$900" },
-          { label: "Calgary airport — Monday night (recommended)", amount: "C$175" },
         ],
       },
       {
@@ -214,19 +212,18 @@ const TRIP = {
       {
         name: "Flights (USD)",
         rows: [
-          { label: "Dad · RSW", amount: "US$762" },
-          { label: "Jeremy · LGA", amount: "US$386" },
-          { label: "Alex · DCA", amount: "US$500" },
+          { label: "Dad · RSW → YYC → BUF", amount: "US$724" },
+          { label: "Jeremy · LGA", amount: "US$528" },
+          { label: "Alex · DCA", amount: "US$505" },
         ],
       },
     ],
-    summary: "Rough per-person total, mid-range lodging, no ski rentals: ≈ US$1,600–1,800. Splurge at the Fairmont adds ≈ US$400/pp.",
+    summary: "Ground total (CAD): ≈ C$3,973 ≈ US$2,900 at $0.73/CAD · Flights: US$1,757 · Grand total: ≈ US$4,657 · Per person: ≈ US$1,552. Splurge at the Fairmont adds ≈ US$400/pp.",
   },
 
   tips: [
-    { emoji: "🎂", title: "Dad turns 70", text: "Saturday dinner is THE moment. Book well in advance. Consider a small surprise — cake, toast, photo." },
+    { emoji: "🎂", title: "Dad turns 70", text: "Saturday dinner at The Bison is THE moment. Book well in advance. Consider a small surprise — cake, toast, photo." },
     { emoji: "🎿", title: "Sunshine closes May 18", text: "You're arriving for Sunshine's last two days. Monday is closing day — Slush Cup pond-skim in costume, iconic Banff tradition." },
-    { emoji: "⚠️", title: "Tuesday 6 AM flight", text: "Drive to the Calgary airport hotel Monday evening. Don't attempt the 2:30 AM drive. Marriott In-Terminal is the easiest play." },
     { emoji: "🅿️", title: "Lift tickets", text: "~C$140–170/day. Buy online in advance. Senior (65+) discount applies — save Dad some cash." },
     { emoji: "🏔️", title: "Delirium Dive", text: "Sunshine's famous freeride zone. Requires avalanche transceiver, probe, shovel. Guided access available." },
     { emoji: "🥾", title: "Hiking in May", text: "Lower trails (Tunnel Mtn, Johnston Canyon) are good. Higher alpine still snowbound. Bring microspikes." },
@@ -235,14 +232,13 @@ const TRIP = {
     { emoji: "🚗", title: "Rental car", text: "SUV recommended. AWD helpful for spring mountain roads. Book early." },
     { emoji: "🌡️", title: "Weather", text: "Highs ~14°C (58°F), lows near 0°C (32°F). Pack layers. Snow at elevation is normal in May." },
     { emoji: "📱", title: "Cell service", text: "Spotty in mountains. Download offline Google Maps for the area. AT&T / Verizon have international day passes." },
-    { emoji: "☎️", title: "Reservations to book now", text: "Saturday birthday dinner · hotel rooms · rental car · Sunshine lift tickets · Calgary airport hotel for Monday." },
+    { emoji: "☎️", title: "Reservations to book now", text: "Saturday birthday dinner · hotel rooms · rental car · Sunshine lift tickets (cheaper online)." },
   ],
 
   nextSteps: [
-    { number: 1, title: "Book the Saturday birthday dinner" },
+    { number: 1, title: "Book the Saturday birthday dinner (The Bison)" },
     { number: 2, title: "Lock the Banff hotel (3 nights)" },
-    { number: 3, title: "Book Calgary airport hotel (Mon night)" },
-    { number: 4, title: "Reserve the SUV" },
-    { number: 5, title: "Buy Sunshine lift tickets (senior discount for Dad)" },
+    { number: 3, title: "Reserve the SUV" },
+    { number: 4, title: "Buy Sunshine lift tickets (senior discount for Dad)" },
   ],
 };
