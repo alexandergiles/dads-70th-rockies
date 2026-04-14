@@ -146,8 +146,7 @@ const TRIP = {
   ],
 
   flightCallouts: [
-    { emoji: "🛬", text: "All three flights land at YYC within 12 minutes (12:43–12:54 PM). Easy to meet at baggage claim and pick up the rental together." },
-    { emoji: "🛫", text: "Tuesday flights are all afternoon (Dad 12:34 PM → BUF · Jeremy & Alex 1:45 PM). No pre-dawn drive — sleep in Banff Mon night, relaxed morning, leave for YYC ~11 AM." },
+    { emoji: "🛫", text: "Tuesday returns are all afternoon — Dad 12:34 PM (RSW → BUF), Jeremy & Alex 1:45 PM. Leave Banff ~11 AM." },
   ],
 
   lodging: {

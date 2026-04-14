@@ -10,22 +10,10 @@ document.getElementById("heroTitle").textContent = `${TRIP.title} — ${TRIP.sub
 const heroList = document.getElementById("heroList");
 [
   "Sat May 16 · Arrive YYC, drive to Banff, birthday dinner",
-  "Sun May 17 · Ski Sunshine Village all day",
-  "Mon May 18 · Pick one: ski, hike, or hot springs",
-  "Tue May 19 · Pre-dawn drive, 6 AM flights home",
+  "Sun May 17 · Ski Sunshine Village",
+  "Mon May 18 · Flex day (see options)",
+  "Tue May 19 · Relaxed morning, afternoon flights home",
 ].forEach(t => { const li = document.createElement("li"); li.textContent = t; heroList.appendChild(li); });
-document.getElementById("heroQuote").textContent = `"${TRIP.quote}"`;
-document.getElementById("heroSub").textContent = TRIP.oneLiner;
-
-// ===== At a glance =====
-const glanceEl = document.getElementById("glance");
-TRIP.glance.forEach(g => {
-  const c = document.createElement("div");
-  c.className = "glance-card";
-  c.innerHTML = `<div class="glance-val">${g.value}</div><div class="glance-lbl">${g.label}</div>`;
-  glanceEl.appendChild(c);
-});
-document.getElementById("arcSummary").textContent = TRIP.arcSummary;
 
 // ===== Map =====
 const map = L.map("map", { scrollWheelZoom: false });
@@ -66,15 +54,33 @@ TRIP.mapPoints.forEach(p => {
   });
 });
 
-// Dashed line YYC → Canmore → Banff → Sunshine
-const route = [
+map.fitBounds(pts, { padding: [40, 40] });
+
+// Driving route YYC → Canmore → Banff via OSRM (falls back to straight line)
+const routeStops = [
   TRIP.mapPoints.find(p => p.kind === "airport"),
   TRIP.mapPoints.find(p => p.kind === "stop"),
   TRIP.mapPoints.find(p => p.kind === "base"),
-].map(p => [p.lat, p.lng]);
-L.polyline(route, { color: "#0E5C4B", weight: 2, dashArray: "8 6", opacity: 0.7 }).addTo(map);
+];
+const coordStr = routeStops.map(p => `${p.lng},${p.lat}`).join(";");
+const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${coordStr}?overview=full&geometries=geojson`;
 
-map.fitBounds(pts, { padding: [40, 40] });
+let routeLayer = L.polyline(routeStops.map(p => [p.lat, p.lng]), {
+  color: "#0E5C4B", weight: 2, dashArray: "8 6", opacity: 0.5,
+}).addTo(map);
+
+fetch(osrmUrl)
+  .then(r => r.ok ? r.json() : null)
+  .then(data => {
+    if (!data || !data.routes || !data.routes[0]) return;
+    const coords = data.routes[0].geometry.coordinates.map(([lng, lat]) => [lat, lng]);
+    map.removeLayer(routeLayer);
+    routeLayer = L.polyline(coords, {
+      color: "#0E5C4B", weight: 3, opacity: 0.75,
+    }).addTo(map);
+    map.fitBounds(pts, { padding: [40, 40] });
+  })
+  .catch(() => { /* keep straight-line fallback */ });
 
 // ===== Days =====
 const dayList = document.getElementById("dayList");
@@ -145,9 +151,9 @@ TRIP.flightCallouts.forEach(co => {
 
 // ===== Lodging =====
 const tiersEl = document.getElementById("lodgingTiers");
-const renderCard = (h, highlight) => {
+const renderCard = (h) => {
   const stars = "★".repeat(Math.floor(h.stars)) + (h.stars % 1 ? "½" : "");
-  return `<div class="lodging-card${highlight ? " highlight" : ""}">
+  return `<div class="lodging-card">
     <div class="name">${h.name}</div>
     <div class="meta">${stars} · C$${h.rate}/night · ${h.vibe}</div>
     <div class="note">${h.note}</div>
@@ -157,45 +163,10 @@ const tierBlock = (label, eyebrow, hotels, fourCol) => `
   <div class="tier">
     <div class="eyebrow">${eyebrow}</div>
     <h3>${label}</h3>
-    <div class="lodging-grid${fourCol ? " four" : ""}">${hotels.map(h => renderCard(h, h.name.includes("Marriott In-Terminal"))).join("")}</div>
+    <div class="lodging-grid${fourCol ? " four" : ""}">${hotels.map(renderCard).join("")}</div>
   </div>`;
-const tierBlocks = [
-  tierBlock("Budget-friendly", "Tier 1", TRIP.lodging.budget),
-  tierBlock("Mid-range (recommended)", "Tier 2", TRIP.lodging.mid, true),
-  tierBlock("Splurge — make it memorable", "Tier 3", TRIP.lodging.splurge),
-];
-if (TRIP.lodging.calgary && TRIP.lodging.calgary.length) {
-  tierBlocks.push(tierBlock("Calgary airport · Mon May 18 night", "Monday night", TRIP.lodging.calgary));
-}
-tiersEl.innerHTML = tierBlocks.join("");
-
-// ===== Costs =====
-document.getElementById("costNote").textContent = TRIP.costs.note;
-const costList = document.getElementById("costList");
-TRIP.costs.sections.forEach(s => {
-  const g = document.createElement("div");
-  g.className = "cost-group";
-  g.innerHTML = `<h3>${s.name}</h3>` + s.rows.map(r =>
-    `<div class="row"><span>${r.label}</span><span class="amount">${r.amount}</span></div>`
-  ).join("");
-  costList.appendChild(g);
-});
-document.getElementById("costSummary").textContent = TRIP.costs.summary;
-
-// ===== Tips =====
-const tipsEl = document.getElementById("tipsList");
-TRIP.tips.forEach(t => {
-  const d = document.createElement("div");
-  d.className = "tip";
-  d.innerHTML = `<div class="tip-emoji">${t.emoji}</div><h4>${t.title}</h4><p>${t.text}</p>`;
-  tipsEl.appendChild(d);
-});
-
-// ===== Next steps =====
-const nextEl = document.getElementById("nextList");
-TRIP.nextSteps.forEach(s => {
-  const d = document.createElement("div");
-  d.className = "next-item";
-  d.innerHTML = `<span class="next-num">${s.number}</span><h3 class="next-title">${s.title}</h3>`;
-  nextEl.appendChild(d);
-});
+tiersEl.innerHTML = [
+  tierBlock("Budget", "Tier 1", TRIP.lodging.budget),
+  tierBlock("Mid-range", "Tier 2", TRIP.lodging.mid, true),
+  tierBlock("Splurge", "Tier 3", TRIP.lodging.splurge),
+].join("");

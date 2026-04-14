@@ -25,8 +25,6 @@
       <a href="#monday">Monday</a>
       <a href="#flights">Flights</a>
       <a href="#lodging">Lodging</a>
-      <a href="#costs">Costs</a>
-      <a href="#tips">Tips</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -39,31 +37,17 @@
     <a href="#monday">Monday</a>
     <a href="#flights">Flights</a>
     <a href="#lodging">Lodging</a>
-    <a href="#costs">Costs</a>
-    <a href="#tips">Tips</a>
   </div>
 </nav>
 
 <!-- Hero -->
 <section id="overview" style="padding:0">
-  <div class="hero">
+  <div class="hero hero-single">
     <div class="hero-left">
       <div class="hero-kicker" id="heroKicker"></div>
       <h1 id="heroTitle"></h1>
       <ul id="heroList"></ul>
     </div>
-    <div class="hero-right">
-      <p class="hero-quote" id="heroQuote"></p>
-      <p class="hero-subquote" id="heroSub"></p>
-    </div>
-  </div>
-</section>
-
-<!-- At a glance -->
-<section>
-  <div class="wrap">
-    <div class="glance" id="glance"></div>
-    <div class="callout" id="arcSummary"></div>
   </div>
 </section>
 
@@ -71,7 +55,7 @@
 <section id="route">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">The route</div>
+      <div class="eyebrow">Route</div>
       <h2>YYC → Canmore → Banff → Sunshine</h2>
       <p>~1h 30m from Calgary to Banff. Sunshine's gondola base is another 20 min out of town.</p>
     </div>
@@ -89,8 +73,8 @@
 <section id="days">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Day by day</div>
-      <h2>Four days, one mountain town</h2>
+      <div class="eyebrow">Itinerary</div>
+      <h2>Day by day</h2>
     </div>
     <div class="days" id="dayList"></div>
   </div>
@@ -101,8 +85,7 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Monday · pick one</div>
-      <h2>Four ways to spend the flex day</h2>
-      <p>Wrap by late afternoon, farewell dinner in town, chill evening in Banff.</p>
+      <h2>Monday options</h2>
     </div>
     <div class="mon-grid" id="monOptions"></div>
 
@@ -119,7 +102,7 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Flights</div>
-      <h2>Three airports, one baggage claim</h2>
+      <h2>Flight information</h2>
     </div>
     <div class="flights" id="flightCards"></div>
     <div id="flightCallouts"></div>
@@ -131,50 +114,15 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Lodging</div>
-      <h2>All three nights in Banff</h2>
-      <p>Two rooms (Dad solo, brothers share). Mid-range is the recommended anchor; splurge if we want to make it memorable.</p>
+      <h2>Banff · 3 nights · TBD</h2>
+      <p>Two rooms (Dad solo, brothers share). Options across three tiers below.</p>
     </div>
     <div class="lodging-tiers" id="lodgingTiers"></div>
   </div>
 </section>
 
-<!-- Costs -->
-<section id="costs">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Costs</div>
-      <h2>Roughly what to plan for</h2>
-    </div>
-    <p class="cost-note" id="costNote"></p>
-    <div id="costList"></div>
-    <div class="cost-summary" id="costSummary"></div>
-  </div>
-</section>
-
-<!-- Tips -->
-<section id="tips">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Key info</div>
-      <h2>Things worth knowing</h2>
-    </div>
-    <div class="tips" id="tipsList"></div>
-  </div>
-</section>
-
-<!-- Next steps -->
-<section class="next" id="next">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Next steps</div>
-      <h2>Book these now</h2>
-    </div>
-    <div class="next-list" id="nextList"></div>
-  </div>
-</section>
-
 <footer class="site">
-  Planned with love for Dad's 70th · May 16–19, 2026
+  May 16–19, 2026
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin></script>
