@@ -71,8 +71,7 @@ const TRIP = {
       accent: "teal",
       emoji: "🛫",
       items: [
-        { time: "Morning", text: "Coffee + breakfast in Banff. Final walk around town." },
-        { time: "Optional", text: "One more Upper Hot Springs soak or short hike before the drive." },
+        { time: "Morning", text: "Coffee + breakfast in Banff." },
         { time: "9:00 AM", text: "Check out of the hotel." },
         { time: "9:30 AM", text: "Drive to YYC (~1.5 hr)." },
         { time: "Afternoon", text: "Return the rental and fly home. Dad 12:34 PM → BUF. Jeremy & Alex 1:45 PM." },
