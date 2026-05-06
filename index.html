@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin>
-<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./styles.css?v=6">
 </head>
 <body>
 
@@ -23,7 +23,6 @@
       <a href="#route">Route</a>
       <a href="#days">Days</a>
       <a href="#monday">Monday</a>
-      <a href="#flights">Flights</a>
       <a href="#lodging">Lodging</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
@@ -32,10 +31,11 @@
   </div>
   <div class="nav-mobile" id="navMobile">
     <a href="#overview">Overview</a>
+    <a href="#flights">Flights</a>
     <a href="#route">Route</a>
     <a href="#days">Days</a>
     <a href="#monday">Monday</a>
-    <a href="#flights">Flights</a>
+    <a href="#pack">Pack</a>
     <a href="#lodging">Lodging</a>
   </div>
 </nav>
@@ -48,6 +48,13 @@
       <h1 id="heroTitle"></h1>
       <ul id="heroList"></ul>
     </div>
+  </div>
+</section>
+
+<!-- Flights -->
+<section id="flights">
+  <div class="wrap">
+    <div class="flights" id="flightCards"></div>
   </div>
 </section>
 
@@ -88,24 +95,25 @@
       <h2>Monday options</h2>
     </div>
     <div class="mon-grid" id="monOptions"></div>
-
-    <div class="section-head" style="margin-top:32px;margin-bottom:14px">
-      <div class="eyebrow">Suggested combos</div>
-      <h2 style="font-size:22px">Or pick a theme</h2>
-    </div>
-    <div class="combos" id="monCombos"></div>
   </div>
 </section>
 
-<!-- Flights -->
-<section id="flights">
+<!-- Pack -->
+<section id="pack">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Flights</div>
-      <h2>Flight information</h2>
+      <div class="eyebrow">Prep</div>
+      <h2>What to pack</h2>
+      <p id="packNote"></p>
     </div>
-    <div class="flights" id="flightCards"></div>
-    <div id="flightCallouts"></div>
+    <div class="pack-weather" id="weatherTile">
+      <div class="weather-head">
+        <span class="weather-eyebrow">Forecast · Banff, AB</span>
+        <span class="weather-status" id="weatherStatus">loading…</span>
+      </div>
+      <div class="weather-days" id="weatherDays"></div>
+    </div>
+    <div class="pack-groups" id="packGroups"></div>
   </div>
 </section>
 
@@ -113,11 +121,11 @@
 <section id="lodging">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Lodging</div>
-      <h2>Banff · 3 nights · TBD</h2>
-      <p>Two rooms (Dad solo, brothers share). Options across three tiers below.</p>
+      <div class="eyebrow">Lodging · Booked</div>
+      <h2 id="lodgingTitle"></h2>
+      <p id="lodgingMeta"></p>
     </div>
-    <div class="lodging-tiers" id="lodgingTiers"></div>
+    <div class="lodging-booked" id="lodgingBooked"></div>
   </div>
 </section>
 
@@ -126,8 +134,8 @@
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin></script>
-<script src="./data.js"></script>
-<script src="./app.js"></script>
+<script src="./data.js?v=6"></script>
+<script src="./app.js?v=6"></script>
 
 </body>
 </html>

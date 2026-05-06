@@ -62,7 +62,7 @@ const TRIP = {
       items: [
         { time: "Morning + afternoon", text: "Pick one of the four options below (or combo them). Sunshine's closing day with the Slush Cup is the headline." },
         { time: "Evening", text: "Farewell dinner in Banff — Bear Street Tavern or Magpie & Stump." },
-        { time: "Night", text: "Chill in Banff. No rush tomorrow — flights are all afternoon." },
+        { time: "Night", text: "Hang out in Banff. No rush tomorrow — flights are all afternoon." },
       ],
     },
     {
@@ -71,10 +71,10 @@ const TRIP = {
       accent: "teal",
       emoji: "🛫",
       items: [
-        { time: "Morning", text: "Coffee + breakfast in Banff. Final walk around town, no rush." },
-        { time: "~10 AM", text: "Check out of the hotel." },
+        { time: "Morning", text: "Coffee + breakfast in Banff. Final walk around town." },
         { time: "Optional", text: "One more Upper Hot Springs soak or short hike before the drive." },
-        { time: "~11 AM", text: "Drive to YYC (~1.5 hr)." },
+        { time: "9:00 AM", text: "Check out of the hotel." },
+        { time: "9:30 AM", text: "Drive to YYC (~1.5 hr)." },
         { time: "Afternoon", text: "Return the rental and fly home. Dad 12:34 PM → BUF. Jeremy & Alex 1:45 PM." },
       ],
     },
@@ -84,37 +84,31 @@ const TRIP = {
     {
       title: "Ski Sunshine — closing day",
       emoji: "🎿",
-      tag: "Full day · $170 · your level",
+      tag: "Full day · your level",
       body: "Sunshine's last day of the season. Spring corn snow, bluebird vibes, and the legendary Slush Cup pond-skim at ~1 PM where skiers cross a freezing pond in costume. The most 'Banff' way to close out the trip.",
       logistics: "20 min drive from Banff. Free shuttle. Off the mountain by 3:30 PM leaves plenty of time for dinner in town.",
     },
     {
       title: "Johnston Canyon → Ink Pots",
       emoji: "🥾",
-      tag: "4–5 hours · free · moderate",
+      tag: "4–5 hours · moderate",
       body: "Iconic spring hike. Catwalks built into canyon walls past Lower & Upper Falls, then beyond into a quieter valley with the Ink Pots — turquoise spring-fed pools in an open meadow. 11 km round trip.",
       logistics: "30 min from Banff via Bow Valley Pkwy. Bring microspikes (icy), bear spray, layers. Parking + washrooms at trailhead.",
     },
     {
       title: "Tunnel Mountain summit",
       emoji: "⛰️",
-      tag: "2 hours · free · easy–moderate",
+      tag: "2 hours · easy–moderate",
       body: "Quick summit hike from town. 4.3 km RT, 300m gain, switchbacks. South-facing, usually thaws early. Big Bow Valley views from the top. Low commitment — leaves time for hot springs / brunch later.",
       logistics: "Trailhead in Banff townsite — no driving needed.",
     },
     {
       title: "Banff Upper Hot Springs",
       emoji: "♨️",
-      tag: "1.5–2 hours · $12 · recovery",
-      body: "40°C mineral pools with mountain views. Perfect après-ski / post-hike combo. Plan ~$12/pp plus small rental fees for towel + locker.",
+      tag: "1.5–2 hours · recovery",
+      body: "40°C mineral pools with mountain views. Perfect après-ski / post-hike combo.",
       logistics: "5 min from Banff townsite. Pairs well with Tunnel Mountain in the morning.",
     },
-  ],
-
-  mondayCombos: [
-    { name: "🏔️ Ski it out", body: "Ski Sunshine all day → farewell dinner in Banff. Most ski-focused. Best for the closing-day experience." },
-    { name: "🌲 Big nature day", body: "Johnston Canyon hike (AM) → lunch in Banff → Upper Hot Springs (PM) → dinner in town. Best mix of hike + recovery." },
-    { name: "🥾 Easy & relaxed", body: "Tunnel Mountain hike (AM) → coffee on Banff Ave → Upper Hot Springs → farewell dinner. Lowest effort, most flexible." },
   ],
 
   flights: [
@@ -124,7 +118,6 @@ const TRIP = {
       out: "Sat 6:45 AM → 12:54 PM (1 stop IAH)",
       back: "Tue 12:34 PM → 9:01 PM (1 stop ORD) → BUF",
       airline: "United / Air Canada",
-      cost: "$724 USD",
       badge: "multi-city",
     },
     {
@@ -133,7 +126,6 @@ const TRIP = {
       out: "Sat 7:25 AM → 12:43 PM (1 stop YYZ)",
       back: "Tue 1:45 PM → 10:36 PM",
       airline: "Air Canada / United",
-      cost: "$528 USD",
     },
     {
       who: "Alex",
@@ -141,30 +133,77 @@ const TRIP = {
       out: "Sat 6:59 AM → 12:43 PM (1 stop YYZ)",
       back: "Tue 1:45 PM → 10:28 PM",
       airline: "Air Canada / United",
-      cost: "$505 USD",
     },
   ],
 
-  flightCallouts: [
-    { emoji: "🛫", text: "Tuesday returns are all afternoon — Dad 12:34 PM (RSW → BUF), Jeremy & Alex 1:45 PM. Leave Banff ~11 AM." },
-  ],
+  booking: {
+    name: "Marten St Condo",
+    area: "Downtown Banff",
+    address: "316 Marten Street, Banff, AB T1L, Canada",
+    platform: "Airbnb",
+    checkIn: "Sat May 16",
+    checkOut: "Tue May 19",
+    nights: 3,
+    images: [
+      { src: "images/banff_condo.avif", alt: "Marten St Condo" },
+      { src: "images/Banff2.png", alt: "Map showing the condo in downtown Banff" },
+    ],
+  },
 
-  lodging: {
-    budget: [
-      { name: "Banff Boundary Lodge", stars: 2.5, rate: 120, vibe: "Cozy, no-frills", note: "Great value, close to town. Adventure-oriented." },
-      { name: "Irwin's Mountain Inn", stars: 3, rate: 130, vibe: "Classic mountain", note: "Walking distance to downtown. Hot tub. Reliable." },
-      { name: "Canalta Lodge", stars: 3, rate: 140, vibe: "Comfortable", note: "Pool, fitness center, on the Bow River." },
-    ],
-    mid: [
-      { name: "Elk + Avenue Hotel", stars: 3.5, rate: 180, vibe: "Modern, central", note: "Heart of downtown. Farm & Fire restaurant on-site." },
-      { name: "Moose Hotel & Suites", stars: 3.5, rate: 200, vibe: "Upscale-casual", note: "Rooftop hot pools with mountain views. 9.6 on Expedia." },
-      { name: "Banff Caribou Lodge & Spa", stars: 3.5, rate: 190, vibe: "Lodge + spa", note: "Spa, pool, sauna. Great after ski days." },
-      { name: "Peaks Hotel & Suites", stars: 3, rate: 175, vibe: "Family-friendly", note: "Steam room, hot tub. Solid value." },
-    ],
-    splurge: [
-      { name: "Fairmont Banff Springs", stars: 5, rate: 450, vibe: "Iconic castle", note: "\"Castle in the Rockies.\" Once-in-a-lifetime for Dad's 70th." },
-      { name: "Rimrock Resort Hotel", stars: 4.5, rate: 300, vibe: "Elegant, quiet", note: "Near Banff Gondola. (Eden restaurant closed for renovation until July 2026.)" },
-      { name: "Sunshine Mountain Lodge", stars: 4, rate: 250, vibe: "Ski-in / ski-out", note: "Only on-mountain lodge at Sunshine. Remote from town." },
+  pack: {
+    note: "Renting skis, boots, and poles in Banff — no need to fly with gear.",
+    groups: [
+      {
+        name: "Layers",
+        items: [
+          "Base layer top + bottom (merino or synthetic)",
+          "Insulating mid-layer (fleece or light puffy)",
+          "Waterproof shell jacket",
+          "Snow / shell pants for the mountain",
+          "Beanie + ball cap",
+          "Gloves — warm pair for skiing, lighter pair for town",
+          "Buff or neck gaiter",
+          "Wool socks ×4",
+        ],
+      },
+      {
+        name: "Mountain",
+        items: [
+          "Ski goggles",
+          "Sunglasses",
+          "Sunscreen SPF 50 (face + lip)",
+          "Hand warmers (2–3 pairs)",
+          "Daypack (~20L)",
+          "Reusable water bottle",
+        ],
+      },
+      {
+        name: "Hiking",
+        items: [
+          "Trail shoes or waterproof boots",
+          "Microspikes (icy patches)",
+          "Buy bear spray in Banff",
+        ],
+      },
+      {
+        name: "Town + hot springs",
+        items: [
+          "One nice outfit for Dad's birthday dinner",
+          "Comfortable walking shoes",
+          "Swimsuit",
+          "Quick-dry towel (or rent one at the springs)",
+        ],
+      },
+      {
+        name: "Docs + tech",
+        items: [
+          "Passport",
+          "Driver's license (rental car)",
+          "No-foreign-fee credit card",
+          "Phone charger (Canada uses the same plug)",
+          "Offline Google Maps for Banff",
+        ],
+      },
     ],
   },
 
